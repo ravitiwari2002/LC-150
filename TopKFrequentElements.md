@@ -52,3 +52,37 @@ class Solution {
     }
 }
 ```
+
+## Optimal Approach
+
+Iterate over the array and put keys in a `HashMap`. If a key is already in the `HashMap`, increment its value by 1. Then add all entries from the `HashMap` to a max heap (priority queue) and return the top `k` elements from the max heap.
+
+**Time Complexity:** O(n log n)  
+**Space Complexity:** O(n)
+
+## Solution Code
+
+```java
+class Solution {
+    public int[] topKFrequent(int[] nums, int k) {
+        Map<Integer, Integer> map = new HashMap<>();
+        int[] ans = new int[k];
+
+        for (int num : nums) {
+            map.put(num, map.getOrDefault(num, 0) + 1);
+        }
+
+        PriorityQueue<Map.Entry<Integer, Integer>> maxHeap = new PriorityQueue<>(
+            (a, b) -> b.getValue() - a.getValue()
+        );
+
+        maxHeap.addAll(map.entrySet());
+
+        for (int i = 0; i < k; i++) {
+            ans[i] = maxHeap.poll().getKey();
+        }
+
+        return ans;
+    }        
+}
+```
