@@ -74,5 +74,6 @@ class Solution {
         return true;
     }
 }
+```
 
 In case of unicode characters, we can use HashMap. 
