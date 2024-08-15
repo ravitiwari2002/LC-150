@@ -43,3 +43,34 @@ class Solution {
     }
 }
 ```
+
+# Optimal Approach
+
+Use a frequency count to check if both strings have the same characters with identical counts. Here’s how:
+
+**Time Complexity:** O(n) and **Space Complexity:** O(1)
+
+## Solution Code
+
+```java
+class Solution {
+    public boolean isAnagram(String s, String t) {
+        if (s.length() != t.length()) {
+            return false;
+        }
+        
+        int[] count = new int[26];
+        for (char c : s.toCharArray()) {
+            count[c - 'a']++;
+        }
+        for (char c : t.toCharArray()) {
+            if (--count[c - 'a'] < 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+}
+```
+
+In case of unicode characters, we can use HashMap. 
