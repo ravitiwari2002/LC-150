@@ -46,7 +46,7 @@ class Solution {
 
 # Optimal Approach
 
-Use a frequency count to check if both strings have the same characters with identical counts. Here’s how:
+Use a frequency count to check if both strings have the same characters with identical counts. 
 
 **Time Complexity:** O(n) and **Space Complexity:** O(1)
 
