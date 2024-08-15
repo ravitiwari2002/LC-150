@@ -40,6 +40,7 @@ class Solution {
         return false;
     }
 }
+```
 
 # Optimal Approach 
 
@@ -64,3 +65,4 @@ class Solution {
         return false;
     }
 }
+```
