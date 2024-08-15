@@ -119,3 +119,43 @@ class Solution {
     }
 }
 ```
+
+## Approach 3: Using Output Array for Left and Right Products
+
+We create two passes over the array to calculate the product of all elements to the left and right of each index. 
+
+1. **Compute Left Products in Output Array:**
+   - Initialize the output array where `output[i]` will store the product of all elements to the left of `i`.
+   - Traverse the array from left to right to populate the `output` array with these products.
+
+2. **Compute Right Products Using a Running Variable:**
+   - Traverse the array from right to left using a running variable to keep track of the product of all elements to the right of the current index.
+   - Update the `output` array by multiplying it with the running variable to get the final result.
+
+**Time Complexity:** O(n) and **Space Complexity:** O(1) (excluding the output array)
+
+## Solution Code
+
+```java
+class Solution {
+    public int[] productExceptSelf(int[] nums) {
+        int n = nums.length;
+        int[] output = new int[n];
+        
+        // Step 1: Compute the product of elements to the left of each index
+        output[0] = 1;
+        for (int i = 1; i < n; i++) {
+            output[i] = output[i - 1] * nums[i - 1];
+        }
+
+        // Step 2: Compute the product of elements to the right of each index
+        int rightProduct = 1;
+        for (int i = n - 1; i >= 0; i--) {
+            output[i] *= rightProduct;
+            rightProduct *= nums[i];
+        }
+
+        return output;
+    }
+}
+```
