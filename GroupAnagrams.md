@@ -76,9 +76,9 @@ class Solution {
 
 This approach uses a `HashMap` to group anagrams. Each string in the input array is sorted, and this sorted string serves as a key in the map. Anagrams will have the same sorted string, so they will be grouped under the same key.
 
-**Time Complexity:** \(O(n * klog k)\), where \(n\) is the number of strings, and \(k\) is the maximum length of a string in `strs`.
+**Time Complexity:** O(n * klog k), where \(n\) is the number of strings, and \(k\) is the maximum length of a string in `strs`.
 
-**Space Complexity:** \(O(n*k)\), due to the storage needed for the map and the groups of anagrams.
+**Space Complexity:** O(n*k), due to the storage needed for the map and the groups of anagrams.
 
 ## Solution Code
 
