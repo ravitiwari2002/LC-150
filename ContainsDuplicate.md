@@ -21,7 +21,7 @@ Given an integer array `nums`, return `true` if any value appears at least twice
 
 # Brute Force Approach 
 
-This solution uses a brute force approach to determine if an array contains any duplicates by comparing each element with every other element using nested loops. 
+Compare each element with every other element using nested loops. 
 
 **Time Complexity:** O(n<sup>2</sup>) and **Space Complexity:** O(1)
 
@@ -35,6 +35,30 @@ class Solution {
                 if (nums[i] == nums[j]) {
                     return true;
                 }
+            }
+        }
+        return false;
+    }
+}
+
+# Optimal Approach 
+
+Insert all elements into a `HashSet`. If an element already exists in the `HashSet`, the add operation will return `false`, indicating that the element is a duplicate. 
+
+**Time Complexity:** O(n) and **Space Complexity:** O(n)
+
+## Solution Code
+
+```java
+class Solution {
+    public boolean containsDuplicate(int[] nums) {
+        HashSet<Integer> set = new HashSet<>();
+        for(int i = 0; i < nums.length; i++){
+            if(!set.add(nums[i])){
+                return true;
+            }
+            else{
+                set.add(nums[i]);
             }
         }
         return false;
