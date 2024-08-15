@@ -58,19 +58,21 @@ class Solution {
         if (s.length() != t.length()) {
             return false;
         }
-        
-        int[] count = new int[26];
-        for (char c : s.toCharArray()) {
-            count[c - 'a']++;
+
+        int[] arr = new int[26];
+
+        for (int i = 0; i < s.length(); i++) {
+            arr[s.charAt(i) - 'a']++;
+            arr[t.charAt(i) - 'a']--;
         }
-        for (char c : t.toCharArray()) {
-            if (--count[c - 'a'] < 0) {
+
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] != 0) {
                 return false;
             }
         }
         return true;
     }
 }
-```
 
 In case of unicode characters, we can use HashMap. 
