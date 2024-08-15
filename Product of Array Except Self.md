@@ -70,3 +70,52 @@ class Solution {
     }
 }
 ```
+## Approach 2
+
+This approach involves creating two arrays to hold the product of elements to the left and right of each element, and then computing the final result by multiplying the corresponding products from both arrays:
+
+1. **Initialize Arrays:**
+   - Create `left` and `right` arrays to store the product of elements to the left and right of each index, respectively. Initialize `left[0]` and `right[nums.length - 1]` to 1.
+
+2. **Compute Products:**
+   - Populate the `left` array by iterating from left to right.
+   - Populate the `right` array by iterating from right to left.
+
+3. **Compute Final Result:**
+   - Calculate the result for each index by multiplying the corresponding values from `left` and `right` arrays.
+
+**Time Complexity:** O(n)  
+**Space Complexity:** O(n)
+
+## Solution Code
+
+```java
+class Solution {
+    public int[] productExceptSelf(int[] nums) {
+        int[] left = new int[nums.length];
+        left[0] = 1;
+
+        int[] right = new int[nums.length];
+        right[nums.length-1] = 1;
+
+        int[] ans = new int[nums.length];
+
+        // Fill left products
+        for(int i = 1; i < nums.length; i++){
+            left[i] = nums[i-1] * left[i-1];
+        }
+
+        // Fill right products
+        for(int i = nums.length-2; i >=0 ; i--){
+            right[i] = right[i+1] * nums[i+1];
+        }
+
+        // Compute final result
+        for(int i = 0; i < nums.length; i++){
+            ans[i] = left[i]*right[i];
+        }
+
+        return ans;
+    }
+}
+```
