@@ -31,7 +31,7 @@ An Anagram is a word or phrase formed by rearranging the letters of a different 
 
 Compare each string with every other string to check if they are anagrams by sorting their characters and grouping them accordingly.
 
-**Time Complexity:** O(n^2 * k log k)  
+**Time Complexity:** O(n<sup>2</sup> * k log k)  
 **Space Complexity:** O(n * k)
 
 ## Solution Code
