@@ -52,3 +52,31 @@ class Solution {
     }
 }
 ```
+
+# Optimal Approach
+
+We use a `HashMap` to store the elements of the array as keys and their indices as values. As we iterate over the array, we calculate the difference between the target and the current element. If this difference is found in the `HashMap`, it means we have found the two numbers that add up to the target. We return their indices. If the difference is not in the `HashMap`, we add the current element and its index to the `HashMap`.
+
+**Time Complexity:** O(n)  
+**Space Complexity:** O(n)
+
+## Solution Code
+
+```java
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+        Map<Integer, Integer> map = new HashMap<>();
+
+        for (int i = 0; i < nums.length; i++) {
+            int diff = target - nums[i];
+
+            if (map.containsKey(diff)) {
+                return new int[] {i, map.get(diff)};
+            } else {
+                map.put(nums[i], i);
+            }
+        }
+        return new int[]{};
+    }
+}
+```
