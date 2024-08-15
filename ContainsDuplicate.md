@@ -22,8 +22,8 @@ Given an integer array `nums`, return `true` if any value appears at least twice
 # Brute Force Approach 
 
 This solution uses a brute force approach to determine if an array contains any duplicates by comparing each element with every other element using nested loops. 
-**Time Complexity:** O(n<sup>2</sup>) 
-**Space Complexity:** O(1)
+
+**Time Complexity:** O(n<sup>2</sup>) and **Space Complexity:** O(1)
 
 ## Solution Code
 
