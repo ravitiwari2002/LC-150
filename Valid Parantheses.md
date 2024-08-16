@@ -49,3 +49,43 @@ class Solution {
     }
 }
 ```
+## Optimal Approach
+
+We use a stack to keep track of opening brackets as we traverse the string. For each character in the string:
+- If it is an opening bracket (`(`, `{`, `[`), we push it onto the stack.
+- If it is a closing bracket (`)`, `}`, `]`), we check the stack:
+  - If the stack is empty, we return `false` as there is no matching opening bracket.
+  - If the stack is not empty, we peek at the top element:
+    - If it matches the corresponding opening bracket, we pop it from the stack.
+    - If it does not match, we return `false`.
+- After processing all characters, we check if the stack is empty. If it is, the string is valid; otherwise, it is not.
+
+### Time Complexity: **O(n)** and Space Complexity: **O(n)**
+
+```java
+class Solution {
+    public boolean isValid(String s) {
+        Stack<Character> stack = new Stack<>();
+
+        for (int i = 0; i < s.length(); i++) {
+            
+            if (s.charAt(i) == '(' || s.charAt(i) == '{' || s.charAt(i) == '[') {
+                stack.push(s.charAt(i));
+            } else {
+                if (stack.isEmpty()) {
+                    return false;
+                }
+                
+                if ((s.charAt(i) == ')' && stack.peek() == '(') || 
+                    (s.charAt(i) == '}' && stack.peek() == '{') || 
+                    (s.charAt(i) == ']' && stack.peek() == '[')) {
+                    stack.pop();
+                } else {
+                    return false;
+                }
+            }
+        }
+        return stack.isEmpty();
+    }
+}
+```
