@@ -28,8 +28,7 @@ You must write an algorithm that runs in O(n) time.
 
 We sort the array so that it already forms the sequence. We then traverse the array while keeping track of the longest sequence and skipping duplicates.
 
-**Time Complexity:** O(n log n) 
-**Space Complexity:** O(1) 
+**Time Complexity:** O(n log n) and **Space Complexity:** O(1) 
 ```java
 class Solution {
     public int longestConsecutive(int[] nums) {
