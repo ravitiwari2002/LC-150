@@ -21,3 +21,38 @@ You must write an algorithm that runs in O(n) time.
 
 - `0 <= nums.length <= 10^5`
 - `-10^9 <= nums[i] <= 10^9`
+
+## Solution
+
+### Brute Force Approach
+
+We sort the array so that it already forms the sequence. We then traverse the array while keeping track of the longest sequence and skipping duplicates.
+
+**Time Complexity:** O(n log n) 
+**Space Complexity:** O(1) 
+```java
+class Solution {
+    public int longestConsecutive(int[] nums) {
+        if (nums.length == 0) 
+            return 0;
+
+        Arrays.sort(nums);
+
+        int max = 1;
+        int current = 1;
+
+        for (int i = 0; i < nums.length - 1; i++) {
+            if (nums[i] != nums[i + 1]) {
+                if (nums[i] + 1 == nums[i + 1]) {
+                    current++;
+                } else {
+                    max = Math.max(max, current);
+                    current = 1;
+                }
+            }
+        }
+
+        return Math.max(max, current);
+    }
+}
+```
