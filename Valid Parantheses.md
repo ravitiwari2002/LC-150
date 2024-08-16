@@ -1,4 +1,4 @@
-## Problem Statement
+## [Problem Statement](https://leetcode.com/problems/valid-parentheses/description/)
 
 Given a string `s` containing just the characters `'('`, `')'`, `'{'`, `'}'`, `'['` and `']'`, determine if the input string is valid.
 
@@ -30,8 +30,7 @@ An input string is valid if:
 
 Using the String method, we iteratively replace all instances of `"()"`, `"{}"`, and `"[]"` with an empty string `""`. We continue this process until no more replacements can be made, and then we check if the remaining string is empty.
 
-### Time Complexity: 
-- The time complexity is **O(n<sup>2</sup>)** and Space Complexity: - The space complexity is **O(n)**. Because String Manipulation in Java is not in-place.
+### Time Complexity: **O(n<sup>2</sup>)** and Space Complexity: **O(n)**. Because String Manipulation in Java is not in-place.
 
 ```java
 class Solution {
