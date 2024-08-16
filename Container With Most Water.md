@@ -32,3 +32,30 @@ Notice that you may not slant the container.
 - `n == height.length`
 - `2 <= n <= 10^5`
 - `0 <= height[i] <= 10^4`
+
+## Approach
+
+We use a two-pointer strategy for this problem. The idea is to start with two pointers at the beginning and end of the array, and then move the pointer which points to the shorter line towards the other pointer. This is because the shorter line limits the amount of water the container can store, and by moving the shorter line, we potentially increase the area by finding a taller line that might store more water with the remaining lines.
+
+### Time Complexity: `O(n)` and Space Complexity: `O(1)`
+
+```java
+class Solution {
+    public int maxArea(int[] heights) {
+        int start = 0;
+        int end = heights.length - 1;
+        int max_area = 0;
+
+        while (start < end) {
+            if (heights[start] < heights[end]) {
+                max_area = Math.max(max_area, heights[start] * (end - start));
+                start++;
+            } else {
+                max_area = Math.max(max_area, heights[end] * (end - start));
+                end--;
+            }
+        }
+        return max_area;
+    }
+}
+```
