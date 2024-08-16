@@ -55,3 +55,44 @@ class Solution {
     }
 }
 ```
+
+## Optimal Approach
+
+We utilize a HashMap to track the presence of each element in the array, initially setting all values to `false`. The map helps us identify and mark elements as part of a sequence. We iterate through the array and check each element to see if the next and previous numbers in the sequence are present and have not been used yet. If the conditions are met, we increment the sequence length accordingly and update the map. We continue this process for all elements to find the maximum sequence length.
+
+**Time Complexity:** O(n) and **Space Complexity:** O(n)
+```java
+class Solution {
+    public int longestConsecutive(int[] nums) {
+        Map<Integer, Boolean> map = new HashMap<>();
+
+        for (int num : nums) {
+            map.put(num, false);
+        }
+
+        int max_sequence = 0;
+
+        for (int i = 0; i < nums.length; i++) {
+            int curr_sequence = 1;
+            int next = nums[i] + 1;
+
+            while (map.containsKey(next) && map.get(next) == false) {
+                curr_sequence++;
+                map.put(next, true);
+                next++;
+            }
+
+            int prev = nums[i] - 1;
+            while (map.containsKey(prev) && map.get(prev) == false) {
+                curr_sequence++;
+                map.put(prev, true);
+                prev--;
+            }
+
+            max_sequence = Math.max(max_sequence, curr_sequence);
+        }
+
+        return max_sequence;
+    }
+}
+```
