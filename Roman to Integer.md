@@ -1,4 +1,4 @@
-## Problem Statement
+## [Problem Statement](https://leetcode.com/problems/roman-to-integer/description/)
 
 Roman numerals are represented by seven different symbols:
 
@@ -43,3 +43,47 @@ Given a Roman numeral, convert it to an integer.
 - `1 <= s.length <= 15`
 - `s` contains only the characters `('I', 'V', 'X', 'L', 'C', 'D', 'M')`.
 - It is guaranteed that `s` is a valid Roman numeral in the range `[1, 3999]`.
+
+  ## Approach
+
+Since in Roman numerals, smaller values can precede larger values to indicate subtraction (like `IV` for 4 or `IX` for 9), we can utilize a map to store the Roman numeral symbols and their corresponding values. We iterate over the string and compare the current character with the next character:
+- If the current character represents a smaller value than the next one, subtract it from the total.
+- Otherwise, add it to the total.
+- Finally, add the value of the last character.
+
+### Time Complexity
+- **Time Complexity:** O(n), where `n` is the length of the string.
+- **Space Complexity:** O(1), because the space used by the map and the integer total is constant.
+
+## Solution Code
+
+```java
+import java.util.HashMap;
+import java.util.Map;
+
+class Solution {
+    public int romanToInt(String s) {
+        Map<Character, Integer> map = new HashMap<>();
+
+        map.put('I', 1);
+        map.put('V', 5);
+        map.put('X', 10);
+        map.put('L', 50);
+        map.put('C', 100);
+        map.put('D', 500);
+        map.put('M', 1000);
+
+        int ans = 0;
+
+        for (int i = 0; i < s.length() - 1; i++) {
+            if (map.get(s.charAt(i)) < map.get(s.charAt(i + 1))) {
+                ans -= map.get(s.charAt(i));
+            } else {
+                ans += map.get(s.charAt(i));
+            }
+        }
+
+        return ans + map.get(s.charAt(s.length() - 1));
+    }
+}
+```
