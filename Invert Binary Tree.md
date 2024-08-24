@@ -4,14 +4,14 @@ Given the root of a binary tree, invert the tree, and return its root.
 
 ### Example 1
 
-https://assets.leetcode.com/uploads/2021/03/14/invert1-tree.jpg
+![image](https://github.com/user-attachments/assets/a9ecbb52-47e6-4ac7-9c7a-8b30ac62b0d8)
 
 Input: root = [4,2,7,1,3,6,9]
 Output: [4,7,2,9,6,3,1]
 
 ### Example 2
 
-https://assets.leetcode.com/uploads/2021/03/14/invert2-tree.jpg 
+![image](https://github.com/user-attachments/assets/44bc25a7-6334-41a8-9651-cd948feaf03a)
 
 Input: root = [2,1,3]
 Output: [2,3,1]
