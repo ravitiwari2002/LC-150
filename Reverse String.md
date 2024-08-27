@@ -18,7 +18,9 @@ You must do this by modifying the input array in-place with O(1) extra memory.
 - `1 <= s.length <= 10^5`
 - `s[i]` is a printable ASCII character.
 
-## Approach: We use two pointers approach to swap characters of string.
+## Approach: 
+
+We use two pointers approach to swap characters of string.
 
 **Time Complexity:** O(n)
 
